@@ -1,0 +1,11 @@
+- import_playbook: build-ca.yml
+
+- import_playbook: build-virl.yml
+
+- import_playbook: config-virl.yml
+
+- import_playbook: deploy-virl.yml
+
+- import_playbook: waitfor-sync.yml
+
+- import_playbook: check-sdwan.yml
