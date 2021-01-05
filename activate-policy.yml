@@ -6,8 +6,6 @@
     vmanage_host: "{{ groups.vmanage_hosts | first }}"
     vmanage_mgmt_interface: "{{ hostvars[vmanage_host].mgmt_interface | default('ansible_host') }}"
     vmanage_ip: "{{ hostvars[vmanage_host][vmanage_mgmt_interface] | ipaddr('address') }}"
-  tags:
-    - policy
   tasks:
     - name: Activate central policy
       vmanage_central_policy:

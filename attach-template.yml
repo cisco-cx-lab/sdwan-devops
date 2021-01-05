@@ -24,5 +24,3 @@
       async: 90
       poll: 10
       register: attachment_results
-      tags:
-        - attach
