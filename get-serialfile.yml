@@ -1,8 +1,15 @@
 - name: Get serial file from S3
   hosts: localhost
   gather_facts: no
+  vars:
+    aws_access_key_id: "{{ lookup('env','AWS_ACCESS_KEY_ID') }}"
+    aws_secret_access_key: "{{ lookup('env','AWS_SECRET_ACCESS_KEY') }}"
+    aws_region: "{{ lookup('env','AWS_REGION') }}"
   tasks:
   - aws_s3:
+      aws_access_key: "{{ aws_access_key_id }}"
+      aws_secret_key: "{{ aws_secret_access_key }}"
+      region: "{{ aws_region }}"
       bucket: sdwan-devops-us-east-1
       object: serialFile.viptela
       dest: licenses/serialFile.viptela
