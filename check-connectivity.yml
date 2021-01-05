@@ -1,0 +1,25 @@
+- name: Check initial topology connectivity
+  hosts: "{{ passed }}"
+  connection: local
+  any_errors_fatal: true
+  gather_facts: no
+  tasks:
+    - name: Ping outside interface of Internet routers
+      ios_ping:
+        dest: "{{ hostvars[item].interfaces.GigabitEthernet2.ip.primary | ipaddr('address') }}"
+      loop: "{{ groups.internet_routers | intersect(groups.virl_hosts) }}"
+      register: result
+      retries: 60
+      delay: 10
+      until: result is not failed
+      connection: network_cli
+
+    - name: Ping inside interface of Internet routers
+      ios_ping:
+        dest: "{{ hostvars[item].interfaces.GigabitEthernet3.ip.primary | ipaddr('address') }}"
+      loop: "{{ groups.internet_routers | intersect(groups.virl_hosts) }}"
+      register: result
+      retries: 60
+      delay: 10
+      until: result is not failed
+      connection: network_cli
