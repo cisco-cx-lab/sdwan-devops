@@ -1,5 +1,3 @@
-- import_playbook: check-reqs.yml
-
 - import_playbook: waitfor-vmanage.yml
 
 - import_playbook: refresh-cml.yml 
