@@ -6,6 +6,10 @@
     aws_secret_access_key: "{{ lookup('env','AWS_SECRET_ACCESS_KEY') }}"
     aws_region: "{{ lookup('env','AWS_REGION') }}"
   tasks:
+  - file:
+      path: licenses
+      state: directory
+  
   - aws_s3:
       aws_access_key: "{{ aws_access_key_id }}"
       aws_secret_key: "{{ aws_secret_access_key }}"
