@@ -2,6 +2,8 @@ ansible==2.8.6
 ansible-lint==4.2.0
 ansible-virl>=0.0.7
 asn1crypto==0.24.0
+boto3==1.16.48
+botocore==1.19.48
 bcrypt==3.1.7
 certifi==2019.6.16
 cffi==1.12.3
