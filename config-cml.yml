@@ -1,0 +1,27 @@
+- import_playbook: check-reqs.yml
+
+- import_playbook: waitfor-vmanage.yml
+
+- import_playbook: refresh-cml.yml 
+
+- import_playbook: check-vmanage.yml
+
+- import_playbook: config-vmanage.yml
+
+- import_playbook: import-templates.yml
+  tags:
+    - templates
+
+- import_playbook: import-policy.yml
+  tags:
+    - policy
+
+- import_playbook: attach-template.yml
+  tags:
+    - templates
+    - attach
+
+- import_playbook: activate-policy.yml
+  tags:
+    - policy
+    - attach

@@ -1,9 +1,6 @@
 - name: Check playbook requirements
   hosts: localhost
-  connection: network_cli
-  tags:
-    - network
-    - CA
+  connection: local
   any_errors_fatal: true
   gather_facts: no
   tasks:

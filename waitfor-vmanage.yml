@@ -1,0 +1,19 @@
+- name: Wait for vmanage mgmt interface to be available
+  hosts: localhost
+  connection: local
+  any_errors_fatal: true
+  gather_facts: no
+  vars:
+    vmanage_host: "{{ groups.vmanage_hosts | first }}"
+    vmanage_mgmt_interface: "{{ hostvars[vmanage_host].mgmt_interface | default('ansible_host') }}"
+  tasks:
+    - virl_lab_facts:
+        host: "{{ virl_host }}"
+        user: "{{ virl_username }}"
+        password: "{{ virl_password }}"
+        lab: "{{ virl_lab }}"
+      register: result
+      until: result.virl_facts.nodes[vmanage_host][vmanage_mgmt_interface] | default(False)
+      when: vmanage_mgmt_interface == 'ansible_host'
+      retries: 12
+      delay: 10

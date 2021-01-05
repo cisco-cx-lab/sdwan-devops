@@ -13,6 +13,9 @@
   any_errors_fatal: true
   gather_facts: no
   tasks:
+    - debug:
+        var: vmanage_ip
+        
     - name: Waiting for vManage API to start
       uri:
         url: "https://{{ vmanage_ip }}/dataservice/system/device/controllers"
