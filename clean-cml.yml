@@ -16,7 +16,7 @@
   connection: local
   gather_facts: no
   tags:
-    - vmanage
+    - always
   tasks:
     - block:
       - set_fact:
@@ -76,8 +76,7 @@
   connection: local
   gather_facts: no
   tags:
-    - never
-    - delete
+    - always
   tasks:
     - name: Delete the lab
       virl_lab:
