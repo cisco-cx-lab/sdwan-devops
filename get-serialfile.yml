@@ -1,0 +1,9 @@
+- name: Get serial file from S3
+  hosts: localhost
+  gather_facts: no
+  tasks:
+  - aws_s3:
+      bucket: sdwan-devops-us-east-1
+      object: serialFile.viptela
+      dest: licenses/serialFile.viptela
+      mode: get

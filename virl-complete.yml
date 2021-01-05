@@ -2,6 +2,8 @@
 
 - import_playbook: build-virl.yml
 
+- import_playbook: get-serialfile.yml
+
 - import_playbook: config-virl.yml
 
 - import_playbook: deploy-virl.yml
