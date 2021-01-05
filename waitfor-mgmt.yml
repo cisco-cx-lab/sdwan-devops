@@ -1,0 +1,15 @@
+- name: Wait for mgmt interface
+  hosts: "{{ passed }}"
+  connection: local
+  any_errors_fatal: true
+  gather_facts: no
+  tasks:
+    - virl_lab_facts:
+        host: "{{ virl_host }}"
+        user: "{{ virl_username }}"
+        password: "{{ virl_password }}"
+        lab: "{{ virl_lab }}"
+      register: result
+      until: result.virl_facts.nodes[inventory_hostname].ansible_host is defined and result.virl_facts.nodes[inventory_hostname].ansible_host
+      retries: 60
+      delay: 10

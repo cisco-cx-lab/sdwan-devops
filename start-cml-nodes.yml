@@ -1,0 +1,20 @@
+- name: Start Nodes
+  hosts: "{{ passed | default('all') }}"  
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Generating day0 config
+      set_fact:
+        day0_config: "{{ lookup('template', virl_config_template) }}"
+      when: virl_config_template is defined
+
+    - name: Start Node
+      virl_node:
+        name: "{{ inventory_hostname }}"
+        host: "{{ virl_host }}"
+        user: "{{ virl_username }}"
+        password: "{{ virl_password }}"
+        lab: "{{ virl_lab }}"
+        state: started
+        image_definition: "{{ virl_image_definition | default(omit) }}"
+        config: "{{ day0_config | default(omit) }}"
