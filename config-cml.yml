@@ -10,6 +10,6 @@
 
 - import_playbook: import-policy.yml
 
-- import_playbook: attach-template.yml
+- import_playbook: attach-template.yml passed=sdwan_control:&virl_hosts
 
 - import_playbook: activate-policy.yml
