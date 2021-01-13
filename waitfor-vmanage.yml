@@ -17,3 +17,5 @@
       when: vmanage_mgmt_interface == 'ansible_host'
       retries: 12
       delay: 10
+    
+    - meta: refresh_inventory
