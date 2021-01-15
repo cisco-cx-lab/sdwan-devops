@@ -1,11 +1,11 @@
 all:
-  vars:
-    ansible_user: admin
-    ansible_password: admin
-    ansible_network_os: ios
-    netconf_template_os: ios
   children:
     network:
+      vars:
+        ansible_user: admin
+        ansible_password: admin
+        ansible_network_os: ios
+        netconf_template_os: ios
       children:
         internet_routers:
           hosts:

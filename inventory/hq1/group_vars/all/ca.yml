@@ -1,0 +1,4 @@
+sdwan_cert_dir: "{{ playbook_dir }}/myCA"
+# Encrypt/Vault this in real life
+sdwan_CA_passphrase: Cisc0123
+sdwan_CA_cert: "{{ sdwan_cert_dir }}/myCA.pem"

@@ -4,11 +4,6 @@ vmanage_org: "{{ lookup('env','VMANAGE_ORG') | default('', true) }}"
 smart_token: "{{ lookup('env','SMART_TOKEN') | default('', true) }}"
 ansible_user: "{{ vmanage_user }}"
 ansible_password: "{{ vmanage_pass }}"
-sdwan_serial_file: "{{ playbook_dir }}/licenses/serialFile.viptela"
-sdwan_cert_dir: "{{ lookup('env', 'PWD') }}/myCA"
-# Encrypt/Vault this in real life
-sdwan_CA_passphrase: Cisc0123
-sdwan_CA_cert: "{{ sdwan_cert_dir }}/myCA.pem"
 #viptela_version: "{{ lookup('env','VIPTELA_VERSION') | default('18.4.3', true) }}"
 viptela_version: "{{ lookup('env','VIPTELA_VERSION') | default('19.2.1', true) }}"
 #iosxe_sdwan_version: "{{ lookup('env','IOSXE_SDWAN_VERSION') | default('16.10.2y', true) }}"
